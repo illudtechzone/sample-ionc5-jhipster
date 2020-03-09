@@ -38,7 +38,7 @@ export class AuthService extends IonicAuth {
     const scopes = 'openid profile offline_access';
     const redirectUri = this.onDevice() ? 'dev.localhost.ionic:/callback' : 'http://localhost:8100/implicit/callback';
     const logoutRedirectUri = this.onDevice() ? 'dev.localhost.ionic:/logout' : 'http://localhost:8100/implicit/logout';
-    const AUTH_CONFIG_URI = 'http://localhost:8080/api/auth-info';
+    const AUTH_CONFIG_URI = 'http://localhost:8081/api/auth-info';
 
     if (await this.storage.getItem(AUTH_CONFIG_URI)) {
       this.authConfig = JSON.parse(await this.storage.getItem(AUTH_CONFIG_URI));
@@ -61,8 +61,8 @@ export class AuthService extends IonicAuth {
           console.error('ERROR fetching authentication information, defaulting to Keycloak settings');
           console.error(error);
           this.authConfig = {
-            identity_client: 'web_app',
-            identity_server: 'http://localhost:9080/auth/realms/jhipster',
+            identity_client: 'account',
+            identity_server: 'http://35.211.83.193:8099/auth/realms/Ayoos',
             redirect_url: redirectUri,
             end_session_redirect_url: logoutRedirectUri,
             scopes,
