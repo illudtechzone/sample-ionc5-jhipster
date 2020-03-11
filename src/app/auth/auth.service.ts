@@ -17,7 +17,7 @@ export class AuthService extends IonicAuth {
 
     this.addConfig();
   }
-
+  
   public async startUpAsync() {
     if (this.platform.is('cordova')) {
       (<any>window).handleOpenURL = callbackUrl => {
